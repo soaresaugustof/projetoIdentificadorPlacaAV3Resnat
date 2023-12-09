@@ -1,34 +1,23 @@
 def obterEstado(placa):
-    estado_tabela = {
-        "BFA": "São Paulo",
-        "GKI": "São Paulo",
-        "QSN": "São Paulo",
-        "QSZ": "São Paulo",
-        "KMF": "Rio de Janeiro",
-        "LVE": "Rio de Janeiro",
-        "RIO": "Rio de Janeiro",
-        "RIP": "Rio de Janeiro",
-        "RKV": "Rio de Janeiro",
-        "MOX": "Espírito Santo",
-        "MTZ": "Espírito Santo",
-        "OCV": "Espírito Santo",
-        "ODT": "Espírito Santo",
-        "OVE": "Espírito Santo",
-        "OVF": "Espírito Santo",
-        "OVH": "Espírito Santo",
-        "OVL": "Espírito Santo",
-        "OYD": "Espírito Santo",
-        "OYK": "Espírito Santo",
-        "PPA": "Espírito Santo",
-        "PPZ": "Espírito Santo",
-        "QRB": "Espírito Santo",
-        "QRM": "Espírito Santo",
-        "RBA": "Espírito Santo",
-        "RBJ": "Espírito Santo",
-        "RQM": "Espírito Santo",
-        "RQV": "Espírito Santo",
-        "SDT": "Sequências ainda não definidas"
-    }
+    primeira_letra = placa[0]
+    segunda_letra = placa[1]
+    terceira_letra = placa[2]
 
-    estado = estado_tabela.get(placa[:3], "Estado não encontrado")
-    return estado
+    # Verifica se a sigla é do Paraná
+    if ('A' <= primeira_letra <= 'B' and 'A' <= terceira_letra <= 'Z') or \
+       (primeira_letra == 'R' and segunda_letra == 'H' and 'A' <= terceira_letra <= 'Z'):
+        return 'Paraná'
+
+    # Verifica se a sigla é do Rio Grande do Sul
+    elif (primeira_letra in ('I', 'J') and 'A' <= segunda_letra <= 'D' and 'Q' <= terceira_letra <= 'O'):
+        return 'Rio Grande do Sul'
+
+    # Verifica se a sigla é de Santa Catarina
+    elif ((primeira_letra in ('L', 'M') and 'M' <= segunda_letra <= 'W' and 'M' <= terceira_letra <= 'R') or
+          (primeira_letra == 'O' and segunda_letra == 'K' and ('D' <= terceira_letra <= 'H')) or
+          (primeira_letra == 'Q' and 'H' <= segunda_letra <= 'J' and 'A' <= terceira_letra <= 'Z')):
+        return 'Santa Catarina'
+
+    # Caso não se encaixe em nenhum dos estados especificados
+    else:
+        return None

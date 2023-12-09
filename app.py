@@ -3,7 +3,7 @@ from estados import obterEstado
 def main():
     placa = input("Digite a placa no padrão Mercosul (LLLNLNN): ").upper()
 
-    estadoIdentificado = obterEstado(placa[:3])
+    estadoIdentificado = obterEstado(placa)
 
     print(f"Estado identificado: {estadoIdentificado}")
 
